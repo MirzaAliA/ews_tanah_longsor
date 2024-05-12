@@ -124,8 +124,9 @@ Route::get('/simpanberkala/{mpuaccelerationx}/{mpuaccelerationy}/{mpuacceleratio
 ]);
 
 //routing history ambil 100 data
-Route::get('/data', [
+Route::get('/riwayat', [
     HistorySensor::class, 'indexSensor'
 ]);
 
 Route::get('/monitoring', [ChartController::class, 'chartSensor']);
+Route::get('/riwayat', [ChartController::class, 'chartSensor2', 'indexSensor']);

@@ -9,9 +9,17 @@ class ChartController extends Controller
 {
     public function chartSensor()
     {
-        $data = SSensor::latest()->limit(10)->get();
+        $datachart = SSensor::latest()->limit(10)->get();
         
         // return view('riwayat', ['data' => $data]);
-        return view('monitoring', compact('data'));
+        return view('monitoring', compact('datachart'));
+    }
+
+    public function chartSensor2()
+    {
+        $datachart = SSensor::latest()->limit(10)->get();
+        
+        // return view('riwayat', ['data' => $data]);
+        return view('riwayat', compact('datachart'));
     }
 }
