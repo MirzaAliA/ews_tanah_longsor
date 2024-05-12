@@ -11,6 +11,8 @@ class HistorySensor extends Controller
     {
         $data = SSensor::latest()->limit(100)->get();
         
-        return view('historybacaan', ['data' => $data]);
+        // return view('riwayat', ['data' => $data]);
+        // return view('riwayat', compact('data'));
+        return view('riwayat')->with('data', $data);
     }
 }

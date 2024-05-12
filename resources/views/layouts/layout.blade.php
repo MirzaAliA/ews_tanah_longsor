@@ -8,6 +8,8 @@
     <link href="/public/css/output.css" rel="stylesheet" />
     <!-- PENTING!!!! -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/charts.css/dist/charts.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     @vite('resources/css/app.css')
 </head>
 
