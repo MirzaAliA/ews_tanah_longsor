@@ -140,19 +140,38 @@
                 </div>
 
                 <script>
-                    const xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-                    const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+                    // const xValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+                    // const yValues = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+                    const xValues = {!! json_encode($data->pluck('created_at')) !!};
+                    const yValues1 = {!! json_encode($data->pluck('mpus_gyrox')) !!};
+                    const yValues2 = {!! json_encode($data->pluck('mpus_gyroy')) !!};
+                    const yValues3 = {!! json_encode($data->pluck('mpus_gyroz')) !!};
 
                     new Chart("myChart", {
                         type: "line",
                         data: {
                             labels: xValues,
                             datasets: [{
+                                label: 'Data 1',
                                 fill: true,
                                 lineTension: 0,
                                 backgroundColor: "#FFA1A1",
                                 borderColor: "#D31919",
-                                data: yValues,
+                                data: yValues1,
+                            }, {
+                                label: 'Data 2',
+                                fill: true,
+                                lineTension: 0,
+                                backgroundColor: "#A1FFA1",
+                                borderColor: "#19D319",
+                                data: yValues2,
+                            }, {
+                                label: 'Data 3',
+                                fill: true,
+                                lineTension: 0,
+                                backgroundColor: "#A1CDFF",
+                                borderColor: "#1995D3",
+                                data: yValues3,
                             }]
                         },
                         options: {
@@ -162,8 +181,8 @@
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        min: 6,
-                                        max: 16
+                                        min: 0,
+                                        max: 10
                                     }
                                 }],
                             }
@@ -181,8 +200,8 @@
                 </div>
 
                 <script>
-                    const xValues2 = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-                    const yValues2 = [5, 7, 7, 8, 8, 7, 8, 9, 12, 13, 14];
+                    const xValues2 = {!! json_encode($data->pluck('created_at')) !!};
+                    const yValues4 = {!! json_encode($data->pluck('rains_curah')) !!};
 
                     new Chart("myChart2", {
                         type: "line",
@@ -193,7 +212,7 @@
                                 lineTension: 0,
                                 backgroundColor: "#00BEDE",
                                 borderColor: "#004F81",
-                                data: yValues2,
+                                data: yValues4,
                             }]
                         },
                         options: {
@@ -203,8 +222,8 @@
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        min: 4,
-                                        max: 14
+                                        min: 0,
+                                        max: 10
                                     }
                                 }],
                             }
@@ -220,128 +239,32 @@
             <table class="w-full border border-black">
                 <thead class="border border-black">
                     <th
-                        class="py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                        Waktu</th>
+                        class="border border-black py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                        Gyro X</th>
                     <th
-                        class="py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                        Curah Hujan (mL)</th>
+                        class="border border-black py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                        Gyro Y</th>
                     <th
-                        class="py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                        Kemiringan Tanah (derajat)</th>
+                        class="border border-black py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                        Gyro Z</th>
+                    <th
+                        class="border border-black py-2 bg-[#DDD8BC] font-semibold text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                        Curah Hujan (mm)</th>
                 </thead>
                 <tbody>
                     <tr class="border border-black">
-                        <td class="border border-black">
-                            <div>
-                                <p
-                                    class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                    Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>19.00 WIB</p>
-                            </div>
+                        <td id="gyrox" class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                            No Data
                         </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            50
+                        <td id="gyroy" class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                            No Data
                         </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            60
+                        <td id="gyroz" class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                            No Data
                         </td>
-                    </tr>
-                    <tr class="border border-black">
-                        <td class="border border-black">
-                            <div>
-                                <p
-                                    class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                    Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>20.00 WIB</p>
-                            </div>
+                        <td id="rain_curah" class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
+                            No Data
                         </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            50
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            70
-                        </td>
-                    </tr>
-                    <tr class="border border-black">
-                        <td class="border border-black">
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>21.00 WIB</p>
-                            </div>
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            70
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            100
-                        </td>
-                    </tr>
-                    <tr class="border border-black">
-                        <td class="border border-black">
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>22.00 WIB</p>
-                            </div>
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            80
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            120
-                        </td>
-                    </tr>
-                    <tr class="border border-black">
-                        <td class="border border-black">
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>23.00 WIB</p>
-                            </div>
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            50
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            120
-                        </td>
-                    </tr>
-                    <tr class="border border-black">
-                        <td class="border border-black">
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>Jumat, 3 Mei 2024</p>
-                            </div>
-                            <div class="text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                                <p>00.00 WIB</p>
-                            </div>
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            40
-                        </td>
-                        <td
-                            class="border border-black text-center text-[13px] sm:text-sm md:text-[15px] lg:text-base xl:text-[17px]">
-                            120
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>

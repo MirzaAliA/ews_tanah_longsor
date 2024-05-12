@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RealtimeSensor;
 use App\Http\Controllers\HistorySensor;
 use App\Http\Controllers\HistorySensorSetting;
+use App\Http\Controllers\ChartController;
 
 Route::get('/', function () {
     return view('home', [
@@ -126,3 +127,5 @@ Route::get('/simpanberkala/{mpuaccelerationx}/{mpuaccelerationy}/{mpuacceleratio
 Route::get('/data', [
     HistorySensor::class, 'indexSensor'
 ]);
+
+Route::get('/monitoring', [ChartController::class, 'chartSensor']);

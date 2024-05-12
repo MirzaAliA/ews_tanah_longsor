@@ -44,7 +44,7 @@
         </div>
         <div class="hidden md:block md:w-1/2 px-5 lg:px-16 xl:px-16">
             <img class="w-[400px] lg:w-[430px] xl:w-[450px] max-h-[360px] h-full xl:max-h-[400px] object-cover object-center justify-center mx-auto"
-                src="../assets/bro.png" />
+                src="../../public/assets/bro.png" />
         </div>
     </section>
 
